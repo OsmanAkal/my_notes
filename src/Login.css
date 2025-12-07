@@ -1,0 +1,105 @@
+
+:root {
+  --color-dark: #1F2937;    /* Koyu gri */
+   --color-blue-light: #60A5FA;   /* Açık mavi */
+  --color-blue: #3B82F6;         /* Orta / temel mavi */
+  --color-blue-dark: #1E40AF;    /* Koyu mavi */
+  --color-green: #10B981;   /* Canlı yeşil */
+  --color-orange: #F59E0B;  /* Turuncu */
+  --color-red: #F43F5E;     /* Pembemsi kırmızı */
+  --color-light: #E5E7EB;   /* Açık gri */
+html, body, #root {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+}
+}
+input:focus,
+textarea:focus {
+  border: 1px solid var(--color-dark); /* kendi renkli border */
+  outline: none;
+}
+
+.app-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: "100vh";
+   width: "100%";
+  background-color: var(--color-dark);
+}
+
+.sign-up-box {
+  width: 300px;
+  padding: 30px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 0 10px var(--color-blue-dark);
+}
+.app-header {
+  display: flex;
+  flex-direction: column; /* Üst üste yerleştir */
+  align-items: center;    /* Ortala */
+
+}
+.logo-place{
+ width: 60px;
+  height: 60px;
+  border-radius: 10px;
+  
+  background-color: var(--color-red);
+}
+
+.sign-up-box h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.sign-up-box form {
+  display: flex;
+  flex-direction: column;
+}
+
+.sign-up-box label {
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.sign-up-box input {
+  padding: 8px;
+  margin-bottom: 15px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.sign-up-box button {
+  padding: 10px;
+  border: none;
+  border-radius: 20px;
+  background-color: var(--color-blue-dark);
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.sign-up-box button:hover {
+  background-color:var(--color-blue);
+}
+.clickable-text{
+    color: var(--color-blue-dark);
+  cursor: pointer;
+  text-decoration: underline;
+  transition: color 0.3s;
+}
+.clickable-text:hover {
+  color:var(--color-blue);
+}
+p {
+  font-size: 14px;      
+  font-weight: bold;     
+  line-height: 1.4;     
+  color: #1F2937;  
+  text-align: right;     
+}
+

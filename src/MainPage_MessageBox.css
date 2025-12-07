@@ -1,0 +1,89 @@
+
+:root {
+  --color-dark: #1F2937;   
+  --color-dark-light1: #374151; 
+--color-dark-light2: #4B5563; 
+
+   --color-blue-light: #60A5FA;   
+  --color-blue: #3B82F6;         
+  --color-blue-dark: #1E40AF;   
+
+ --color-purple-light: #9F5AF3;  
+--color-purple: #7C3AED;         
+--color-purple-dark: #5B21B6;   
+
+   --color-red: #F43F5E;
+  --color-red-dark: #B02238;
+  --color-red-light: #FF8398;
+
+  --color-green: #10B981;
+  --color-green-dark: #0A704D;
+  --color-green-light: #4CE1AE;
+
+  --color-light: #E5E7EB;  
+  --color-light-dark1: #D1D5DB;  
+--color-light-dark2: #9CA3AF; 
+--color-light-dark3: #6B7280; 
+
+
+--color-orange: #F59E0B; 
+}
+
+.msgbox-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0,0,0,0.55);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.msgbox-container {
+  background: var(--color-light);
+  padding: 10px;
+  width: 340px;
+  border-radius: 10px;
+  box-shadow: 0px 3px 18px rgba(0,0,0,0.25);
+  text-align: center;
+}
+
+.msgbox-title {
+  margin-bottom: 15px;
+  font-size: 20px;
+  font-weight: bold;
+ color: var(--color-dark);
+   text-align: center;
+}
+
+.msgbox-message {
+  margin-bottom: 20px;
+  color: var(--color-dark);
+    text-align: left;
+}
+
+.msgbox-buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+.msgbox-btn {
+  width: 30%;
+  padding: 10px 0;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 600;
+  
+}
+
+.msgbox-btn.cancel {
+  background-color: var(--color-red-dark);
+   color: white;
+}
+
+.msgbox-btn.confirm {
+  background-color: var(--color-green-dark);
+  color: white;
+}
