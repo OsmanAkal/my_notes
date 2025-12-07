@@ -11,16 +11,46 @@
     "diagrams": [
       {
         "id": 0,
-        "title": "generic_1",
+        "title": "user_Tag",
         "diagramType": "Generic",
         "placeholder": "New generic diagram description",
         "thumbnail": "./public/content/images/thumbnail.jpg",
         "version": "2.5.0",
         "cells": [],
-        "description": "db_diagram"
+        "description": "user_tag_diagram"
+      },
+      {
+        "id": 1,
+        "title": "notes",
+        "diagramType": "Generic",
+        "placeholder": "New generic diagram description",
+        "thumbnail": "./public/content/images/thumbnail.jpg",
+        "version": "2.5.0",
+        "cells": [],
+        "description": "notes_diagram"
+      },
+      {
+        "id": 2,
+        "title": "profiles",
+        "diagramType": "Generic",
+        "placeholder": "New generic diagram description",
+        "thumbnail": "./public/content/images/thumbnail.jpg",
+        "version": "2.5.0",
+        "cells": [],
+        "description": "user_diagram"
+      },
+      {
+        "id": 3,
+        "title": "tags",
+        "diagramType": "Generic",
+        "placeholder": "New generic diagram description",
+        "thumbnail": "./public/content/images/thumbnail.jpg",
+        "version": "2.5.0",
+        "cells": [],
+        "description": "tags_diagram"
       }
     ],
-    "diagramTop": 1,
+    "diagramTop": 4,
     "reviewer": "",
     "threatTop": 0
   }
