@@ -2,7 +2,7 @@ import { useEffect, useState ,useRef,useCallback} from 'react';
 import "./MainPage.css";
 import { DataGrid } from '@mui/x-data-grid';
 import NotesTable from "./MainPageNotesTable";
-import MainPage_MessageBox from "./MainPageMessageBox";
+import MainPageMessageBox from "./MainPageMessageBox";
 
 
 import supabase from "./SupaBase";
@@ -193,11 +193,14 @@ useEffect(() => {
 
 
 
+
 const applyFilters = useCallback(() => {
+  if (!notesData) return; // notesData boşsa çalışmasın
+
   let list = [...notesData];
 
   // Search filter
-  if (searchText.trim() !== "") {
+  if (searchText && searchText.trim() !== "") {
     const s = searchText.toLowerCase();
     list = list.filter(n =>
       n.notes_title.toLowerCase().includes(s) ||
@@ -221,13 +224,11 @@ const applyFilters = useCallback(() => {
   }));
 
   setRows(mapped);
-}, [notesData, searchText, selectedFilterTags, setRows]); // gerekli bağımlılıklar
+}, [notesData, searchText, selectedFilterTags, setRows]);
 
-// useEffect’ler
+// Tek useEffect yeter
 useEffect(() => {
-  if (searchText !== undefined) {
-    applyFilters();
-  }
+  applyFilters();
 }, [applyFilters]);
 
 
@@ -329,7 +330,7 @@ const clearLeftPanel = () => {
   return (
     <div className="main-screen">
 
-      <MainPage_MessageBox
+      <MainPageMessageBox
   show={msgBox.show}
   title={msgBox.title}
   message={msgBox.message}
