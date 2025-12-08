@@ -77,28 +77,35 @@ describe("MainPage_Helper fonksiyonları", () => {
     expect(mockSetRows).toHaveBeenCalled();
   });
 
-  test("rowClick fonksiyonu seçilen notu edit için ayarlamalı", () => {
-    const mockSetEditNoteId = jest.fn();
-    const mockSetTitle = jest.fn();
-    const mockSetContent = jest.fn();
-    const mockSetSelectedTags = jest.fn();
+test("rowClick fonksiyonu seçilen notu edit için ayarlamalı", () => {
+  const mockSetEditNoteId = jest.fn();
+  const mockSetTitle = jest.fn();
+  const mockSetContent = jest.fn();
+  const mockSetSelectedTags = jest.fn();
+  const mockSetSelectedRow = jest.fn();     // <-- yeni
+  const mockSetSelectedRowId = jest.fn();   // <-- yeni
 
-    rowClick(
-      { id: 1, title: "Title1", content: "Content1", tags: ["tag1"] },
-      {
-        setEditNoteId: mockSetEditNoteId,
-        setTitle: mockSetTitle,
-        setContent: mockSetContent,
-        setSelectedTags: mockSetSelectedTags,
-        userTags
-      }
-    );
+  rowClick(
+    { id: 1, title: "Title1", content: "Content1", tags: ["tag1"] },
+    {
+      setEditNoteId: mockSetEditNoteId,
+      setTitle: mockSetTitle,
+      setContent: mockSetContent,
+      setSelectedTags: mockSetSelectedTags,
+      setSelectedRow: mockSetSelectedRow,       // <-- ekle
+      setSelectedRowId: mockSetSelectedRowId,   // <-- ekle
+      userTags
+    }
+  );
 
-    expect(mockSetEditNoteId).toHaveBeenCalledWith(1);
-    expect(mockSetTitle).toHaveBeenCalledWith("Title1");
-    expect(mockSetContent).toHaveBeenCalledWith("Content1");
-    expect(mockSetSelectedTags).toHaveBeenCalledWith([1]);
-  });
+  expect(mockSetEditNoteId).toHaveBeenCalledWith(1);
+  expect(mockSetTitle).toHaveBeenCalledWith("Title1");
+  expect(mockSetContent).toHaveBeenCalledWith("Content1");
+  expect(mockSetSelectedTags).toHaveBeenCalledWith([1]);
+  expect(mockSetSelectedRow).toHaveBeenCalledWith(true);      // <-- kontrol
+  expect(mockSetSelectedRowId).toHaveBeenCalledWith(1);      // <-- kontrol
+});
+
 
   test("updateNote fonksiyonu notu güncellemeli ve state fonksiyonlarını çağırmalı", async () => {
     await updateNote({
@@ -117,10 +124,10 @@ describe("MainPage_Helper fonksiyonları", () => {
 
     expect(mockSetNotesData).toHaveBeenCalled();
     expect(mockSetRows).toHaveBeenCalled();
-    expect(mockClearLeftPanel).toHaveBeenCalled();
   });
 
   test("deletNote fonksiyonu notu silmeli ve state fonksiyonlarını çağırmalı", async () => {
+    const mockSetSelectedRow = jest.fn();
     await deletNote({
       supabase: mockSupabase,
       editNoteId: 1,
@@ -130,7 +137,8 @@ describe("MainPage_Helper fonksiyonları", () => {
       setNotesData: mockSetNotesData,
       setRows: mockSetRows,
       setMsgBox: mockSetMsgBox,
-      clearLeftPanel: mockClearLeftPanel
+      clearLeftPanel: mockClearLeftPanel,
+      setSelectedRow: mockSetSelectedRow 
     });
 
     expect(mockSetNotesData).toHaveBeenCalled();

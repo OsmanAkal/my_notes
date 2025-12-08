@@ -32,6 +32,10 @@ const MainPage = () => {
 
   const [searchText, setSearchText] = useState("")
 
+  const [selectedRow, setSelectedRow] = useState(false);
+const [selectedRowId, setSelectedRowId] = useState(null);
+
+
 // search 
 const searchToken = useRef(0);
 
@@ -239,7 +243,8 @@ const clearLeftPanel = () => {
   setTitle("");
   setContent("");
   setSelectedTags([]);
-  setEditNoteId(null); // Güncelleme modundan çık
+  setEditNoteId(null); 
+  setSelectedRow(false);
 };
 
  // Not kaydetme
@@ -262,6 +267,11 @@ const clearLeftPanel = () => {
   // Not satırına tıklama
   const handleRowClick = (row) => {
     rowClick(row, { setEditNoteId, setTitle: setTitle, setContent: setContent, setSelectedTags, userTags });
+      if (row) {
+    setSelectedRow(true);
+  } else {
+    setSelectedRow(false);
+  }
   };
 
   // Not güncelleme
@@ -276,8 +286,7 @@ const clearLeftPanel = () => {
       userId,
       setNotesData,
       setRows,
-      setMsgBox,
-      clearLeftPanel
+      setMsgBox
     });
   };
 
@@ -292,7 +301,8 @@ const clearLeftPanel = () => {
       setNotesData,
       setRows,
       setMsgBox,
-      clearLeftPanel
+      clearLeftPanel,
+       setSelectedRow
     });
   };
 
@@ -394,8 +404,8 @@ const clearLeftPanel = () => {
                
           </div>
           <button type="submit" form="saveData" className="panel-button">Kaydet</button>
-          <button type="button" onClick={handleUpdate} className="panel-button">Güncelle</button>
-          <button type="button" onClick={handleDelete} className="panel-button">Sil</button>
+          <button type="button" disabled={!selectedRow}  onClick={handleUpdate} className="panel-button">Güncelle</button>
+          <button type="button" disabled={!selectedRow} onClick={handleDelete} className="panel-button">Sil</button>
           <button type="button" onClick={clearLeftPanel} className="panel-button">Temizle</button>
           
         </div>
@@ -433,13 +443,16 @@ const clearLeftPanel = () => {
           
 <DataGrid
   key={rows.length} 
-   onRowClick={(params) =>
-    handleRowClick(params.row, {
+    onRowClick={(params) =>
+      rowClick(params.row, {
       setEditNoteId,
       setTitle,
       setContent,
       setSelectedTags,
-      userTags
+      userTags,
+      selectedRowId,
+      setSelectedRowId,
+      setSelectedRow
     })
   }
   rows={rows}

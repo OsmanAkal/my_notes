@@ -163,20 +163,37 @@ export const saveData = async (e, {
 };
 
 // rowClick
-export const rowClick = (row, { setEditNoteId, setTitle, setContent, setSelectedTags, userTags }) => {
-  setEditNoteId(row.id);
-  setTitle(row.title);
-  setContent(row.content);
+export const rowClick = (
+  row,
+  { setEditNoteId, setTitle, setContent, setSelectedTags, userTags, selectedRowId, setSelectedRowId, setSelectedRow }
+) => {
+  if (selectedRowId === row.id) {
+    // Aynı row tekrar tıklandı → deselect
+    setEditNoteId(null);
+    setTitle("");
+    setContent("");
+    setSelectedTags([]);
+    setSelectedRow(false);
+    setSelectedRowId(null);
+  } else {
+    // Yeni row seçildi
+    setEditNoteId(row.id);
+    setTitle(row.title);
+    setContent(row.content);
 
-  const tagIds = row.tags
-    .map(tagName => {
-      const tagObj = userTags.find(t => t.tag_name === tagName);
-      return tagObj ? tagObj.id : null;
-    })
-    .filter(Boolean);
+    const tagIds = row.tags
+      .map(tagName => {
+        const tagObj = userTags.find(t => t.tag_name === tagName);
+        return tagObj ? tagObj.id : null;
+      })
+      .filter(Boolean);
 
-  setSelectedTags(tagIds);
+    setSelectedTags(tagIds);
+    setSelectedRow(true);
+    setSelectedRowId(row.id);
+  }
 };
+
 
 // updateNote
 export const updateNote = async ({
@@ -189,8 +206,7 @@ export const updateNote = async ({
   userId,
   setNotesData,
   setRows,
-  setMsgBox,
-  clearLeftPanel
+  setMsgBox
 }) => {
   const jsonData = { content: noteContent };
 
@@ -282,7 +298,7 @@ export const updateNote = async ({
   setRows(prev => prev.map(row => (row.id === editNoteId ? mappedRow : row)));
 
   // 6) Formu temizle
-  clearLeftPanel();
+ // clearLeftPanel();
 };
 
 // deletNote
@@ -295,7 +311,8 @@ export const deletNote = async ({
   setNotesData,
   setRows,
   setMsgBox,
-  clearLeftPanel
+  clearLeftPanel,
+   setSelectedRow
 }) => {
   // 1️⃣ Notu sil
   const { error } = await supabase
@@ -326,7 +343,7 @@ export const deletNote = async ({
     content: note.notes_content?.content || "",
     tags: note.note_tags?.map(t => t.tags.tag_name) || []
   }));
-
+setSelectedRow(false);
   // Tag filtreleme varsa uygula
   const filteredRows =
     selectedFilterTags.length === 0
