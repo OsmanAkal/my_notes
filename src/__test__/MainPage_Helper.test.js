@@ -22,7 +22,7 @@ describe("MainPage_Helper fonksiyonları", () => {
             update: jest.fn(() => ({
               eq: jest.fn(() => ({
                 select: jest.fn(() => ({
-                  single: jest.fn().mockResolvedValue({ data: { id: 1 }, error: null })
+                  single: jest.fn().mockResolvedValue({  error: null })
                 }))
               }))
             })),

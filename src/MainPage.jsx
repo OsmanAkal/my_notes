@@ -3,7 +3,7 @@ import "./MainPage.css";
 import { DataGrid } from '@mui/x-data-grid';
 
 import NotesTable from "./MainPage_NotesTable";
-import MainPage_MessageBox from "./MainPage_MessageBox";
+import MainPage_MessageBox from "./MainPageMessageBox";
 
 
 import supabase from "./SupaBase";
@@ -116,7 +116,7 @@ useEffect(() => {
   };
 
   fetchTags();
-}, [userId, supabase]);
+}, [userId]);
 
 useEffect(() => {
   const fetchNotes = async () => {
@@ -153,7 +153,7 @@ useEffect(() => {
   };
 
   fetchNotes();
-}, [userId, supabase]);
+}, [userId]);
 
 
 useEffect(() => {
@@ -198,19 +198,22 @@ useEffect(() => {
   if (searchText !== undefined) {
     applyFilters(searchText);
   }
-}, [searchText]);
+}, [searchText, applyFilters]);
+
 
 useEffect(() => {
-  if (selectedFilterTags !== undefined) {
-    applyFilters(selectedFilterTags);
+  if (searchText !== undefined) {
+    applyFilters(searchText);
   }
-}, [selectedFilterTags]);
+}, [searchText, applyFilters]);
+
 
 useEffect(() => {
-  if (notesData !== undefined) {
-    applyFilters(notesData);
+  if (searchText !== undefined) {
+    applyFilters(searchText);
   }
-}, [notesData]);
+}, [searchText, applyFilters]);
+
 
 
 //tag
@@ -286,7 +289,15 @@ const clearLeftPanel = () => {
 
   // Not satırına tıklama
   const handleRowClick = (row) => {
-    rowClick(row, { setEditNoteId, setTitle: setTitle, setContent: setContent, setSelectedTags, userTags });
+    rowClick(row, {       
+      setEditNoteId,
+      setTitle,
+      setContent,
+      setSelectedTags,
+      userTags,
+      selectedRowId,
+      setSelectedRowId,
+      setSelectedRow});
       if (row) {
     setSelectedRow(true);
   } else {
@@ -464,16 +475,7 @@ const clearLeftPanel = () => {
 <DataGrid
   key={rows.length} 
     onRowClick={(params) =>
-      rowClick(params.row, {
-      setEditNoteId,
-      setTitle,
-      setContent,
-      setSelectedTags,
-      userTags,
-      selectedRowId,
-      setSelectedRowId,
-      setSelectedRow
-    })
+      handleRowClick (params.row, {}) // belki
   }
   rows={rows}
   sx={{

@@ -211,7 +211,7 @@ export const updateNote = async ({
   const jsonData = { content: noteContent };
 
   // 1) Notu güncelle
-  const { data: updatedNote, error } = await supabase
+  const { data:  error } = await supabase
     .from("notes")
     .update({ notes_title: noteTitle, notes_content: jsonData })
     .eq("id", editNoteId)

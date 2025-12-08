@@ -1,4 +1,4 @@
-import React, {useEffect,useState, forwardRef, useImperativeHandle } from "react";
+import React, {useState, forwardRef, useImperativeHandle } from "react";
 
  const MainPage_NotesTable = forwardRef((props, ref) => {
  const { userId, userTags = [], setUserTags, supabase } = props;
@@ -55,7 +55,7 @@ const confirmDelete = async () => {
     }
  if (editingTag) {
   // Düzenleme
-  const { error } = await supabase
+  const {  } = await supabase
     .from("tags")
     .update({ tag_name: cleanTag })
     .eq("id", editingTag.id);

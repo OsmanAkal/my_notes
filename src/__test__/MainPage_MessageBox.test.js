@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
-import MainPage_MessageBox from '../MainPage_MessageBox';
+import MainPage_MessageBox from '../MainPageMessageBox';
 
 test('component shows title and message when show is true', () => {
   render(
