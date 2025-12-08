@@ -1,4 +1,4 @@
-name: React CI
+name: React CI + Docker
 
 on:
   push:
@@ -27,3 +27,23 @@ jobs:
 
     - name: Build project
       run: npm run build
+
+    # ---------------- Docker Build & Push ----------------
+    - name: Login to Docker Hub
+      uses: docker/login-action@v2
+      with:
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
+
+    - name: Build Docker image
+      run: docker build -t your_dockerhub_username/my_notes:latest .
+
+    - name: Push Docker image
+      run: docker push your_dockerhub_username/my_notes:latest
+
+    # ---------------- Deploy ----------------
+    - name: Deploy to Server
+      run: |
+        ssh user@your_server_ip 'docker pull your_dockerhub_username/my_notes:latest && docker stop my_notes || true && docker rm my_notes || true && docker run -d --name my_notes -p 80:80 your_dockerhub_username/my_notes:latest'
+      env:
+        SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
