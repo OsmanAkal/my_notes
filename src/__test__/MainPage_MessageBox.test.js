@@ -1,10 +1,10 @@
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
-import MainPage_MessageBox from '../MainPageMessageBox';
+import MainPageMessageBox from '../MainPageMessageBox';
 
 test('component shows title and message when show is true', () => {
   render(
-    <MainPage_MessageBox
+    <MainPageMessageBox
       show={true}
       title="Test Title"
       message="This is a test message"
@@ -22,7 +22,7 @@ test('component shows title and message when show is true', () => {
 
 test('component does not render when show is false', () => {
   const { container } = render(
-    <MainPage_MessageBox show={false} title="Test" message="Test" />
+    <MainPageMessageBox show={false} title="Test" message="Test" />
   );
 
   expect(container.firstChild).toBeNull();
@@ -33,7 +33,7 @@ test('onCancel and onConfirm callbacks are called', () => {
   const onConfirm = jest.fn();
 
   render(
-    <MainPage_MessageBox
+    <MainPageMessageBox
       show={true}
       title="Test"
       message="Test"

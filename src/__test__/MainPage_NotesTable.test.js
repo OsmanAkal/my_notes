@@ -1,5 +1,5 @@
  import { render, screen, fireEvent, act, waitFor } from "@testing-library/react";
-import MainPage_NotesTable from "../MainPageNotesTable";
+import MainPageNotesTable from "../MainPageNotesTable";
 import React from "react";
 
 // ---- TAM UYUMLU SUPABASE MOCK ----
@@ -63,7 +63,7 @@ test("Yeni tag ekleme çalışıyor", async () => {
 
 
   render(
-    <MainPage_NotesTable
+    <MainPageNotesTable
       userId={1}
       userTags={[]}
       setUserTags={setUserTags}
@@ -124,7 +124,7 @@ test("Yeni tag ekleme çalışıyor", async () => {
   };
 
   render(
-    <MainPage_NotesTable
+    <MainPageNotesTable
       userId={1}
       userTags={[{ id: 1, tag_name: "OldTag" }]}
       setUserTags={setUserTags}
@@ -186,7 +186,7 @@ test("Tag silme çalışıyor", async () => {
   });
 
   render(
-    <MainPage_NotesTable
+    <MainPageNotesTable
       userId={1}
       userTags={userTags}
       setUserTags={setUserTags}

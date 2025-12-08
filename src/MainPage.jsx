@@ -230,17 +230,6 @@ useEffect(() => {
   }
 }, [applyFilters]);
 
-useEffect(() => {
-  if (searchText !== undefined) {
-    applyFilters();
-  }
-}, [applyFilters]);
-
-useEffect(() => {
-  if (searchText !== undefined) {
-    applyFilters();
-  }
-}, [applyFilters]);
 
 
 //tag
