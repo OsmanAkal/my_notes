@@ -1,5 +1,5 @@
  import { render, screen, fireEvent, act, waitFor } from "@testing-library/react";
-import MainPage_NotesTable from "../MainPage_NotesTable";
+import MainPage_NotesTable from "../MainPageNotesTable";
 import React from "react";
 
 // ---- TAM UYUMLU SUPABASE MOCK ----

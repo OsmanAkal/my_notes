@@ -1,8 +1,8 @@
 import { useEffect, useState ,useRef} from 'react';
 import "./MainPage.css";
 import { DataGrid } from '@mui/x-data-grid';
-
-import NotesTable from "./MainPage_NotesTable";
+import { useCallback, useEffect } from "react";
+import NotesTable from "./MainPageNotesTable";
 import MainPage_MessageBox from "./MainPageMessageBox";
 
 
@@ -192,7 +192,9 @@ useEffect(() => {
   }
 }, [selectedFilterTags, notesData]);
 
-const applyFilters = () => {
+
+
+const applyFilters = useCallback(() => {
   let list = [...notesData];
 
   // Search filter
@@ -204,7 +206,7 @@ const applyFilters = () => {
     );
   }
 
-  //  Tag filter
+  // Tag filter
   if (selectedFilterTags.length > 0) {
     list = list.filter(n =>
       n.note_tags?.some(t => selectedFilterTags.includes(t.tag_id))
@@ -220,28 +222,26 @@ const applyFilters = () => {
   }));
 
   setRows(mapped);
-};
+}, [notesData, searchText, selectedFilterTags, setRows]); // gerekli bağımlılıklar
+
+// useEffect’ler
+useEffect(() => {
+  if (searchText !== undefined) {
+    applyFilters();
+  }
+}, [applyFilters]);
 
 useEffect(() => {
   if (searchText !== undefined) {
-    applyFilters(searchText);
+    applyFilters();
   }
-}, [searchText, applyFilters]);
-
+}, [applyFilters]);
 
 useEffect(() => {
   if (searchText !== undefined) {
-    applyFilters(searchText);
+    applyFilters();
   }
-}, [searchText, applyFilters]);
-
-
-useEffect(() => {
-  if (searchText !== undefined) {
-    applyFilters(searchText);
-  }
-}, [searchText, applyFilters]);
-
+}, [applyFilters]);
 
 
 //tag
