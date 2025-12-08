@@ -44,7 +44,7 @@ textarea:focus {
 .logo-place{
  width: 150px;
   height: 150px;
-    background-image: url("../../Belgeler/icon_2.png");
+    background-image: url("icon_2.png");
      background-size: cover;      /* resmi BOZMADAN sığdırır */
   background-repeat: no-repeat;
   background-position: center;
