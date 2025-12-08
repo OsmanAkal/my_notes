@@ -16,7 +16,293 @@
         "placeholder": "New generic diagram description",
         "thumbnail": "./public/content/images/thumbnail.jpg",
         "version": "2.5.0",
-        "cells": [],
+        "cells": [
+          {
+            "position": {
+              "x": 550,
+              "y": 310.0000000000026
+            },
+            "size": {
+              "width": 130,
+              "height": 50
+            },
+            "attrs": {
+              "label": {
+                "text": "Supabase/db\n"
+              }
+            },
+            "visible": true,
+            "shape": "trust-boundary-box",
+            "id": "6845b587-1767-4e71-aa7a-929f6691c951",
+            "zIndex": -1,
+            "data": {
+              "type": "tm.BoundaryBox",
+              "name": "Supabase/db\n",
+              "description": "",
+              "isTrustBoundary": true,
+              "hasOpenThreats": false
+            }
+          },
+          {
+            "position": {
+              "x": 299.9999999999992,
+              "y": 310.0000000000026
+            },
+            "size": {
+              "width": 50,
+              "height": 50
+            },
+            "attrs": {
+              "label": {
+                "text": "App"
+              }
+            },
+            "visible": true,
+            "shape": "trust-boundary-box",
+            "id": "08377d79-a926-416e-af2e-1dce75209a54",
+            "zIndex": -1,
+            "data": {
+              "type": "tm.BoundaryBox",
+              "name": "App",
+              "description": "",
+              "isTrustBoundary": true,
+              "hasOpenThreats": false
+            }
+          },
+          {
+            "position": {
+              "x": 10,
+              "y": 305.0000000000026
+            },
+            "size": {
+              "width": 112.5,
+              "height": 60
+            },
+            "attrs": {
+              "text": {
+                "text": "User"
+              },
+              "body": {
+                "stroke": "#333333",
+                "strokeWidth": 1.5,
+                "strokeDasharray": null
+              }
+            },
+            "visible": true,
+            "shape": "actor",
+            "ports": {
+              "groups": {
+                "top": {
+                  "position": "top",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "right": {
+                  "position": "right",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "bottom": {
+                  "position": "bottom",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "left": {
+                  "position": "left",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                }
+              },
+              "items": [
+                {
+                  "group": "top",
+                  "id": "19fd73e9-3c79-42b4-b5c4-3b3e0cc73e93"
+                },
+                {
+                  "group": "right",
+                  "id": "6c63d595-c1e0-4026-8a53-2101c5e1d9d2"
+                },
+                {
+                  "group": "bottom",
+                  "id": "3d271132-188a-42dc-80bd-28a10e0d3099"
+                },
+                {
+                  "group": "left",
+                  "id": "a59bbfeb-8e8c-49b3-a450-66d006cdd953"
+                }
+              ]
+            },
+            "id": "785f361b-f7ac-4f44-8049-8c12515504be",
+            "zIndex": 0,
+            "data": {
+              "type": "tm.Actor",
+              "name": "User",
+              "description": "",
+              "isTrustBoundary": false,
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "providesAuthentication": false,
+              "threats": []
+            }
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "Kullanıcı verileri",
+              "description": "kullanıcı bilgileri , not ve etiket veriler ve bunlar için güncelleme , silme ve ekleme işlemleri",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isBidirectional": false,
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "protocol": "",
+              "threats": []
+            },
+            "labels": [
+              "Kullanıcı verileri"
+            ],
+            "id": "4c317738-e494-48dd-a61d-a79f5c31eafb",
+            "source": {
+              "x": 173,
+              "y": 336
+            },
+            "target": {
+              "x": 290,
+              "y": 340
+            },
+            "vertices": [
+              {
+                "x": 120,
+                "y": 336
+              },
+              {
+                "x": 260,
+                "y": 336
+              }
+            ]
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "İşlem görmüş veriler\n",
+              "description": "Eklenen , silinen veya güncellenen veriler",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isBidirectional": false,
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "protocol": "API/HTTPS",
+              "threats": []
+            },
+            "labels": [
+              "İşlem görmüş veriler\n"
+            ],
+            "id": "a42ac67f-abcd-480e-93ad-8f7fa7a32043",
+            "source": {
+              "x": 360,
+              "y": 340
+            },
+            "target": {
+              "x": 550,
+              "y": 340
+            },
+            "vertices": [
+              {
+                "x": 450,
+                "y": 338
+              }
+            ],
+            "tools": {
+              "items": [
+                "boundary",
+                "button-remove",
+                "vertices",
+                "source-arrowhead",
+                "target-arrowhead"
+              ],
+              "name": null
+            }
+          }
+        ],
         "description": "user_tag_diagram"
       },
       {
