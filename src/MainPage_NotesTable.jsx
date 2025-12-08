@@ -55,7 +55,7 @@ const confirmDelete = async () => {
     }
  if (editingTag) {
   // Düzenleme
-  const {  } = await supabase
+ await supabase
     .from("tags")
     .update({ tag_name: cleanTag })
     .eq("id", editingTag.id);

@@ -192,7 +192,35 @@ useEffect(() => {
   }
 }, [selectedFilterTags, notesData]);
 
+const applyFilters = () => {
+  let list = [...notesData];
 
+  // Search filter
+  if (searchText.trim() !== "") {
+    const s = searchText.toLowerCase();
+    list = list.filter(n =>
+      n.notes_title.toLowerCase().includes(s) ||
+      n.notes_content?.content?.toLowerCase().includes(s)
+    );
+  }
+
+  //  Tag filter
+  if (selectedFilterTags.length > 0) {
+    list = list.filter(n =>
+      n.note_tags?.some(t => selectedFilterTags.includes(t.tag_id))
+    );
+  }
+
+  // UI mapping
+  const mapped = list.map(note => ({
+    id: note.id,
+    title: note.notes_title,
+    content: note.notes_content?.content || "",
+    tags: note.note_tags?.map(t => t.tags.tag_name) || []
+  }));
+
+  setRows(mapped);
+};
 
 useEffect(() => {
   if (searchText !== undefined) {
@@ -231,35 +259,7 @@ const selectTag = (t) => {
       : [...prev, t]
   );
 };
-const applyFilters = () => {
-  let list = [...notesData];
 
-  // Search filter
-  if (searchText.trim() !== "") {
-    const s = searchText.toLowerCase();
-    list = list.filter(n =>
-      n.notes_title.toLowerCase().includes(s) ||
-      n.notes_content?.content?.toLowerCase().includes(s)
-    );
-  }
-
-  //  Tag filter
-  if (selectedFilterTags.length > 0) {
-    list = list.filter(n =>
-      n.note_tags?.some(t => selectedFilterTags.includes(t.tag_id))
-    );
-  }
-
-  // UI mapping
-  const mapped = list.map(note => ({
-    id: note.id,
-    title: note.notes_title,
-    content: note.notes_content?.content || "",
-    tags: note.note_tags?.map(t => t.tags.tag_name) || []
-  }));
-
-  setRows(mapped);
-};
 
 // sol panel temizleme
 const clearLeftPanel = () => {
