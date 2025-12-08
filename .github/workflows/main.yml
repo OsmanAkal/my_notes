@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-
-=======
 name: React CI
 
 on:
@@ -30,4 +27,3 @@ jobs:
 
     - name: Build project
       run: npm run build
->>>>>>> a866d45 (Add GitHub Actions workflow)

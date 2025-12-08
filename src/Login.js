@@ -31,7 +31,6 @@ const handleLogin = async (e) => {
       <div className="login-box">
         <header className="app-header">
          <div className="logo-place"></div>
-      <h2>My Notes</h2>
       </header>
         <h3>Giriş Yap</h3>
 

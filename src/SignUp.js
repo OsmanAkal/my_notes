@@ -49,7 +49,6 @@ function SignUp() {
       <div className="sign-up-box">
         <header className="app-header">
          <div className="logo-place"></div>
-      <h2>My Notes</h2>
       </header>
         <h3>Kayıt ol</h3>
 

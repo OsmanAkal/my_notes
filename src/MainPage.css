@@ -83,7 +83,17 @@ textarea:focus {
   box-sizing: border-box;  /* padding dahil hesaplama */
 }
 
-
+.logo{
+    width: 200px;
+  height: 200px;
+  overflow: hidden;
+}
+.icon {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;      /* boşluk YOK, bozulma YOK */
+  object-position: center;
+}
 /* Sol Panel */
 .left-panel {
   flex: 1; 
@@ -243,8 +253,13 @@ textarea:focus {
  
 }
 
-
-
+.h-style{
+    font-size: 24px;
+  font-weight: 600;
+  color: var(--color-light);
+  margin-top: 20px;
+   margin-left: 50px;
+}
 .settings-panel {
   position: fixed;
   right: -300px;

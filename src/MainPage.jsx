@@ -19,7 +19,7 @@ const MainPage = () => {
 
   const [userId, setUserId] = useState(null);
   const [userTags, setUserTags] = useState([]);
-
+   const [userName, setUserName] = useState("");
   const [selectedTags, setSelectedTags] = useState([]);
   const [selectedFilterTags, setSelectedFilterTags] = useState([]);
 
@@ -65,11 +65,31 @@ useEffect(() => {
       return;
     }
 
-    if (data?.user) setUserId(data.user.id);
+    if (data?.user) {
+      setUserId(data.user.id);
+    }
   };
 
   fetchUser();
 }, []); // boş bağımlılık array’i
+
+useEffect(() => {
+  if (!userId) return;
+
+  const fetchProfile = async () => {
+    const { data, error } = await supabase
+      .from("profiles")
+      .select("full_name")
+      .eq("id", userId)
+      .single();
+
+    if (!error && data) {
+      setUserName(data.full_name);
+    }
+  };
+
+  fetchProfile();
+}, [userId]);
 
 
 useEffect(() => {
@@ -319,11 +339,11 @@ const clearLeftPanel = () => {
   onConfirm={msgBox.onConfirm}
   onCancel={msgBox.onCancel}
 />
-
-      <h2>MY notes (ayar gerek buraya )</h2>
-      
+        <header>
+      <h2 className="h-style">Hoş geldin, {userName}</h2>
+        </header>
       <div className="main-container">
-     
+      
 
         <div className="left-panel">
            <form id="saveData"  onSubmit={(e) =>
