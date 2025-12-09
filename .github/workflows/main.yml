@@ -41,13 +41,4 @@ jobs:
       - name: Push Docker image
         run: docker push osmanakal/my_notes:latest
 
-      - name: Deploy to Server
-        run: |
-          ssh -o StrictHostKeyChecking=no user@YOUR_SERVER_IP '
-            docker pull osmanakal/my_notes:latest &&
-            docker stop my_notes || true &&
-            docker rm my_notes || true &&
-            docker run -d --name my_notes -p 80:80 osmanakal/my_notes:latest
-          '
-        env:
-          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+      
