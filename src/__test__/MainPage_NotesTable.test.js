@@ -200,22 +200,18 @@ test("Tag silme çalışıyor", async () => {
     ref.current.openTagModal();
   });
 
-  // Tag DOM'a gelene kadar bekle
   await waitFor(() => screen.getByText("SilinecekTag"));
 
-  // Sil butonuna tıkla
   fireEvent.click(screen.getByText("Sil"));
 
-  // Confirm modal açılmasını bekle
   const yesButton = await screen.findByText("Evet");
   fireEvent.click(yesButton);
 
-  // Supabase ve state callback kontrolü
   await waitFor(() => {
     expect(mockSupabase.from).toHaveBeenCalledWith("tags");
     expect(mockDelete).toHaveBeenCalled();
     expect(setUserTags).toHaveBeenCalled();
-    expect(newTags).toEqual([]); // silindikten sonra state boş olmalı
+    expect(newTags).toEqual([]); 
   });
 });
 

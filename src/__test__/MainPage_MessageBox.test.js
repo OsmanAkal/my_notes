@@ -12,11 +12,9 @@ test('component shows title and message when show is true', () => {
     />
   );
 
-  // başlık ve mesaj görünür olmalı
   expect(screen.getByText('Test Title')).toBeInTheDocument();
   expect(screen.getByText('This is a test message')).toBeInTheDocument();
 
-  // cancel button görünür olmalı
   expect(screen.getByText('Close')).toBeInTheDocument();
 });
 
